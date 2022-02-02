@@ -7,9 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the Main branch
   push:
     branches: [ master ]
-env:
-  ZIP_NAME: last_commit.zip
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -17,7 +14,7 @@ jobs:
  #   needs: [job-1-upload-files-to-azure-storage]
     runs-on: ubuntu-latest
     steps:
-      - run: ls
+      - bash: ls
       - uses: azure/docker-login@v1
         with:
             login-server: testregk8s.azurecr.io
