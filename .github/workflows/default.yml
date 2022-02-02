@@ -17,6 +17,7 @@ jobs:
  #   needs: [job-1-upload-files-to-azure-storage]
     runs-on: ubuntu-latest
     steps:
+      - run: ls
       - uses: azure/docker-login@v1
         with:
             login-server: testregk8s.azurecr.io
