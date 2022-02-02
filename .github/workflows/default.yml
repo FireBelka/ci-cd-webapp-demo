@@ -23,5 +23,5 @@ jobs:
             username: ${{ secrets.ACR_USERNAME }}
             password: ${{ secrets.ACR_PASSWORD }}
       - run: |
-            docker build ./web-page -t testregk8s.azurecr.io/ci-cd-demo
+            docker build ./web-page/ -t testregk8s.azurecr.io/ci-cd-demo
             docker push testregk8s.azurecr.io/ci-cd-demo
