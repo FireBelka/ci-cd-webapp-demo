@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: wf-1
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the Main branch
+  push:
+    branches: [ master ]
+env:
+  ZIP_NAME: last_commit.zip
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  job-1-deploy-container-to-ACI:
+ #   needs: [job-1-upload-files-to-azure-storage]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: azure/docker-login@v1
+        with:
+            login-server: testregk8s.azurecr.io
+            username: ${{ secrets.ACR_USERNAME }}
+            password: ${{ secrets.ACR_PASSWORD }}
+      - run: |
+            docker build ./web-page -t testregk8s.azurecr.io/ci-cd-demo
+            docker push testregk8s.azurecr.io/ci-cd-demo
