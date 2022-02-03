@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run : ls .
       - uses: azure/docker-login@v1
         with:
             login-server: testregk8s.azurecr.io
